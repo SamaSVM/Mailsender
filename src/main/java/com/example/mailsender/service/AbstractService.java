@@ -25,7 +25,11 @@ public class AbstractService<E extends Domain, R extends CommonRepository<E>> im
 
     @Override
     public void delete(Integer id) {
-        repository.deleteById(id);
+        try {
+            repository.deleteById(id);
+        } catch (RuntimeException e){
+            throw new ResourceNotFoundException();
+        }
     }
 
     @Override
