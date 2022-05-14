@@ -13,3 +13,7 @@ spring:
 
   jpa:
     open-in-view: true
+
+mailSender:
+  username: sama.svm@gmail.com
+  password: tqrclsdccwjqvmrg
