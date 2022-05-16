@@ -9,4 +9,12 @@ public class UserService extends AbstractService<User, UserRepository> {
     public UserService(UserRepository repository) {
         super(repository);
     }
+
+    public User findByUsername(String username) {
+        return repository.findByUsername(username);
+    }
+
+    public User findByEmail(String email) {
+        return repository.findByEmail(email);
+    }
 }

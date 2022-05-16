@@ -25,4 +25,10 @@ public class User extends Domain {
     @Email
     @Column(name = "email")
     private String email;
+
+    @Override
+    public String toString() {
+        return "{\"username\":\"" + username  + "\""
+        + ", \"email\":\"" + email + "\"}";
+    }
 }

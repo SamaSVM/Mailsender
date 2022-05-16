@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Search User</title>
+</head>
+<body>
+<h1>Search a User:</h1>
+<form action="/" method="get">
+    <button type="submit">Home</button>
+</form>
+<br>
+<form th:action="@{/searchByEmail}"
+      th:object="${userForm}" method="POST">
+    Email:
+    <label>
+        <input type="text" th:field="*{email}"/>
+    </label>
+    <br>
+    <br/>
+    <input type="submit" value="Search"/>
+</form>
+<br/>
+
+<!-- Check if errorMessage is not null and not empty -->
+<div th:if="${errorMessage}" th:utext="${errorMessage}"
+     style="color:red;font-style:italic;">
+</div>
+
+</body>
+</html>
