@@ -1,20 +1,18 @@
-package com.example.mailsender.domain;
+package com.example.mailsender.domain.parents;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @MappedSuperclass
 public class Domain {
     @Id
+    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
-
-    @Column(name = "created_on")
-    private LocalDateTime createdOn = LocalDateTime.now();
 }

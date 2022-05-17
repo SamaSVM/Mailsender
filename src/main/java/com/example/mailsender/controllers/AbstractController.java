@@ -1,6 +1,6 @@
 package com.example.mailsender.controllers;
 
-import com.example.mailsender.domain.Domain;
+import com.example.mailsender.domain.parents.Domain;
 import com.example.mailsender.service.CommonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

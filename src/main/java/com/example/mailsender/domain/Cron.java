@@ -1,5 +1,6 @@
 package com.example.mailsender.domain;
 
+import com.example.mailsender.domain.parents.Resource;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Table(name = "crons")
-public class Cron extends Domain {
+public class Cron extends Resource {
     @NotNull
     @NotEmpty
     @Column(name = "expression")

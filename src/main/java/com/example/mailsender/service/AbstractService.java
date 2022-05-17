@@ -1,6 +1,6 @@
 package com.example.mailsender.service;
 
-import com.example.mailsender.domain.Domain;
+import com.example.mailsender.domain.parents.Domain;
 import com.example.mailsender.exception.ResourceNotFoundException;
 import com.example.mailsender.repository.CommonRepository;
 
@@ -27,7 +27,7 @@ public class AbstractService<E extends Domain, R extends CommonRepository<E>> im
     public void delete(Integer id) {
         try {
             repository.deleteById(id);
-        } catch (RuntimeException e){
+        } catch (RuntimeException e) {
             throw new ResourceNotFoundException();
         }
     }
