@@ -8,7 +8,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,14 +15,12 @@ import java.time.LocalDateTime;
 @Setter
 @Table(name = "users")
 public class User extends Resource {
-    @NotNull
-    @NotEmpty
+    @NotEmpty(message = "Username field must not be empty")
     @Column(name = "username")
     private String username;
 
-    @NotNull
-    @NotEmpty
-    @Email
+    @NotEmpty(message = "Email field must not be empty")
+    @Email(message = "Email field must be a well-formed email address")
     @Column(name = "email")
     private String email;
 

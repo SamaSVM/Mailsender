@@ -4,8 +4,10 @@ import com.example.mailsender.domain.parents.Domain;
 import com.example.mailsender.service.CommonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 public class AbstractController<E extends Domain, S extends CommonService<E>> implements CommonController<E> {
@@ -17,7 +19,12 @@ public class AbstractController<E extends Domain, S extends CommonService<E>> im
 
     @PostMapping
     @Override
-    public ResponseEntity<E> create(@RequestBody E resource) {
+    public ResponseEntity<E> create(@Valid @RequestBody E resource, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            StringBuilder exceptions = new StringBuilder();
+            bindingResult.getAllErrors().forEach(err -> exceptions.append(err.getDefaultMessage()).append("\n"));
+            return new ResponseEntity(exceptions, HttpStatus.BAD_REQUEST);
+        }
         E result = service.save(resource);
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
@@ -25,7 +32,13 @@ public class AbstractController<E extends Domain, S extends CommonService<E>> im
 
     @PutMapping("/{id}")
     @Override
-    public ResponseEntity<E> update(@PathVariable Integer id, @RequestBody E resource) {
+    public ResponseEntity<E> update(
+            @PathVariable Integer id, @Valid @RequestBody E resource, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            StringBuilder exceptions = new StringBuilder();
+            bindingResult.getAllErrors().forEach(err -> exceptions.append(err.getDefaultMessage()).append("\n"));
+            return new ResponseEntity(exceptions, HttpStatus.BAD_REQUEST);
+        }
         resource.setId(id);
         E result = service.update(resource);
         return new ResponseEntity<>(result, HttpStatus.OK);
