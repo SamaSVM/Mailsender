@@ -32,8 +32,7 @@ public class UserController extends AbstractController<User, UserService> {
         } catch (RuntimeException e) {
             return new ResponseEntity<>("User from id - " + id + " does not exist!", HttpStatus.BAD_REQUEST);
         }
-        String body = "Ім'я користувача: " + user.getUsername() + "\nДата та час створення: " + user.getCreatedOn();
-        senderService.sendMail(user.getEmail(), "Вітання!", body);
+        senderService.sendMail(user);
         countService.plusRestCount(user.getCount().getId());
         service.setSendMailDate(user.getId());
         return new ResponseEntity<>("The mail has been sent!", HttpStatus.OK);
