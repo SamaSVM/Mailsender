@@ -51,16 +51,9 @@ public class AbstractController<E extends Domain, S extends CommonService<E>> im
         return HttpStatus.OK;
     }
 
-    @GetMapping("/{id}")
-    @Override
-    public ResponseEntity<E> readById(@PathVariable Integer id) {
-        E result = service.getById(id);
-        return new ResponseEntity<>(result, HttpStatus.OK);
-    }
-
     @GetMapping
     @Override
-    public List<E> readAll() {
-        return service.getAll();
+    public List<E> readAll(@RequestParam("page") Integer page, @RequestParam("size") Integer size) {
+        return service.getAll(page, size);
     }
 }

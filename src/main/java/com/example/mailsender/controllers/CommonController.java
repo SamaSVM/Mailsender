@@ -15,7 +15,5 @@ public interface CommonController<E extends Domain> {
 
     HttpStatus delete(Integer id);
 
-    ResponseEntity<E> readById(Integer id);
-
-    List<E> readAll();
+    List<E> readAll(Integer page, Integer size);
 }

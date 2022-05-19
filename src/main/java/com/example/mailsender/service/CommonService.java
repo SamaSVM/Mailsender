@@ -12,4 +12,6 @@ public interface CommonService<E> {
     E getById(Integer id);
 
     List<E> getAll();
+
+    List<E> getAll(Integer page, Integer size);
 }

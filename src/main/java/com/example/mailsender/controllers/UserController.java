@@ -1,40 +1,48 @@
 package com.example.mailsender.controllers;
 
 import com.example.mailsender.domain.User;
-import com.example.mailsender.service.CountService;
+import com.example.mailsender.domain.enums.Type;
+import com.example.mailsender.exception.ResourceNotFoundException;
 import com.example.mailsender.service.EmailSenderService;
 import com.example.mailsender.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
 public class UserController extends AbstractController<User, UserService> {
-    public UserController(UserService service, CountService countService, EmailSenderService senderService) {
+    public UserController(UserService service, EmailSenderService senderService) {
         super(service);
-        this.countService = countService;
         this.senderService = senderService;
     }
 
-    private final CountService countService;
-
     private final EmailSenderService senderService;
 
-    @PostMapping("/mails/{id}")
+    @PostMapping("/{id}/sendmail")
     public ResponseEntity<String> sendMail(@PathVariable Integer id) {
         User user;
         try {
             user = service.getById(id);
         } catch (RuntimeException e) {
-            return new ResponseEntity<>("User from id - " + id + " does not exist!", HttpStatus.BAD_REQUEST);
+            return ResponseEntity.badRequest().body("User from id - " + id + " does not exist!");
         }
-        senderService.sendMail(user);
-        countService.plusRestCount(user.getCount().getId());
-        service.setSendMailDate(user.getId());
+        senderService.sendMail(user, Type.REST);
         return new ResponseEntity<>("The mail has been sent!", HttpStatus.OK);
+    }
+
+    @GetMapping("/{value}")
+    public List<User> readByValue(@PathVariable String value) {
+        List<User> result = service.findByUsername(value);
+        User user = service.findByEmail(value);
+        if (user != null) {
+            result.add(user);
+        }
+        if (result.isEmpty()) {
+            throw new ResourceNotFoundException();
+        }
+        return result;
     }
 }

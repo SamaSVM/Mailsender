@@ -34,9 +34,15 @@ public class CronService extends AbstractService<Cron, CronRepository> {
     }
 
     @Override
+    public Cron update(Cron entity) {
+        updateTask(entity);
+        return super.update(entity);
+    }
+
+    @Override
     public void delete(Integer id) {
-        deleteTask(id);
         super.delete(id);
+        deleteTask(id);
     }
 
     private void addTask(Cron entity) {
@@ -46,5 +52,10 @@ public class CronService extends AbstractService<Cron, CronRepository> {
 
     private void deleteTask(Integer id) {
         tasks.remove(id).cancel(true);
+    }
+
+    private void updateTask(Cron entity) {
+        deleteTask(entity.getId());
+        addTask(entity);
     }
 }
