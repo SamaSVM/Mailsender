@@ -2,9 +2,7 @@
 - Відкрийте проект за [ссилкою](https://github.com/SamaSVM/mailsender)
 - Натисніть на зелену кнопку `Code`
 
-<p align="center">
-<img  src="./readme_assets/3.png" width="80%">
-</p>
+![alt text](https://github.com/SamaSVM/mailsender/blob/main/readme_assets/3.PNG?raw=true)
 
 ### За домомогою Git
 - Скопіюйте ссилку на проект (копка з двома квадратами)
@@ -12,9 +10,7 @@
 ```
 $ git clone
 ```
-<p align="center">
-<img  src="./readme_assets/4.png" width="80%">
-</p>
+![alt text](https://github.com/SamaSVM/mailsender/blob/main/readme_assets/4.PNG?raw=true)
 
 ### Без Git
 - Натисніть на кнопку `Download ZIP`
@@ -28,14 +24,10 @@ $ git clone
 ./gradlew bootRun
 ```
 
-<p align="center">
-<img  src="./readme_assets/1.png" width="80%">
-</p>
+![alt text](https://github.com/SamaSVM/mailsender/blob/main/readme_assets/1.PNG?raw=true)
 
 ### За допомогою IntelliJ IDEA
 - Відкрийте проект за допомогою IntelliJ IDEA 
 - Виберіть з списку назву головного файлу та натисніть на зелений прямокутник, або комбінацію клавіш `Shift+F10`
 
-<p align="center">
-<img  src="./readme_assets/2.png" width="80%">
-</p>
+![alt text](https://github.com/SamaSVM/mailsender/blob/main/readme_assets/2.PNG?raw=true)
