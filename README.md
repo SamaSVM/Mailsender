@@ -2,7 +2,9 @@
 - Відкрийте проект за [ссилкою](https://github.com/SamaSVM/mailsender)
 - Натисніть на зелену кнопку `Code`
 
-![ScreenShot](./readme_assets/3.png)
+<p align="center">
+<img  src="./readme_assets/3.png" width="80%">
+</p>
 
 ### За домомогою Git
 - Скопіюйте ссилку на проект (копка з двома квадратами)
@@ -10,13 +12,13 @@
 ```
 $ git clone
 ```
-![ScreenShot](./readme_assets/4.png)
+<p align="center">
+<img  src="./readme_assets/4.png" width="80%">
+</p>
 
 ### Без Git
 - Натисніть на кнопку `Download ZIP`
 - Збережіть архів з проектом та розархівуйте в папку куди хочите зберегти проект
-
-
 
 ## Як запустити сервер
 ### За допомогою командної строки
@@ -26,10 +28,14 @@ $ git clone
 ./gradlew bootRun
 ```
 
-![ScreenShot](./readme_assets/1.png)
+<p align="center">
+<img  src="./readme_assets/1.png" width="80%">
+</p>
 
 ### За допомогою IntelliJ IDEA
 - Відкрийте проект за допомогою IntelliJ IDEA 
 - Виберіть з списку назву головного файлу та натисніть на зелений прямокутник, або комбінацію клавіш `Shift+F10`
 
-![ScreenShot](.\readme_assets\2.PNG)
+<p align="center">
+<img  src="./readme_assets/2.png" width="80%">
+</p>
